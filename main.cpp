@@ -7,20 +7,26 @@ using namespace std;
 int main()
 {
 
+    /*La variable n es un numero menor al tamano de la cadena de texto multiplicado por 8: "<(tamanocadena*8)".
+    O, menor al tamano de la cadena binaria.*/
     int n,method;
     string infileN, outfileN, procedure;
 
     cout<<"Ingrese nombre del archivo de entrada (junto con su extension): ";
     cin>>infileN;
+
     cout<<"Ingrese nombre del archivo de salida (junto con su extension): ";
     cin>>outfileN;
+
     cout<<"Para codificar un archivo, ingrese la palabra: code."<<endl;
     cout<<"Para decodificar un archivo, ingrese la palabra: decode."<<endl;
     cout<<"Escriba el procedimiento a seguir: ";
     cin>>procedure;
+
     cout<<"Ingrese semilla para codificar: ";
     cin>>n;
-    cout<<"Ingrese metodo de codificacion: ";
+
+    cout<<"Ingrese metodo de codificacion (1 o 2): ";
     cin>>method;
 
     string datos;
@@ -70,5 +76,6 @@ int main()
         cout<<"Archivo decodificado satisfactoriamente."<<endl;
     }
 
+    system("PAUSE");
     return 0;
 }

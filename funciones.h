@@ -45,6 +45,8 @@ string toBin(string cadena){
 //Funcion que separa una cadena (string) en grupos de "sep" elementos.
 void sepBin(string cadBin, string *cadAlmac, int sep, int lim){
     int var=0, st=0;
+    /*En este ciclo, se va concatenando, cada elemento
+     * de la cadena de binarios, a la posicion 'var' del arreglo cadAlmac*/
     for(int i=0;i<lim;i++){
         cadAlmac[var]+=cadBin[i];
         if(i==(st+(sep-1))){
@@ -66,6 +68,7 @@ void code1m(string in,string *modArr,int arrSize,int eTam,int bits){
 
         string arrElem1 = array[i], arrElem2 = array[i+1];
 
+        /*Al ser la primera operacion, simplemente se cambian los 1s por 0s y viceversa.*/
         if(i==0){
             int toModSize=arrElem1.length();
             for(int count=0;count<toModSize;count++){
@@ -74,14 +77,19 @@ void code1m(string in,string *modArr,int arrSize,int eTam,int bits){
             }
         }
 
+        /*Se cuentan de 1s y 0s de la cadena de los primeros n bits.*/
         int zeros=0,ones=0,countLim=arrElem1.length();
         for(int count=0;count<countLim;count++){
             if(arrElem1[count]=='0') zeros++;
             else if(arrElem1[count]=='1') ones++;
         }
 
+        /*Se establecen condicionales para realizar alguna operacion segun sea el caso.*/
         if(zeros==ones){
             int toModSize=arrElem2.length();
+            /*Se utiliza el for para recorrer los n bits y asi cambiar el valor de 1 por 0, y viceversa,
+             * y concatenarlo a la posicion 'i+1' del arreglo modArr. Es la posicion 'i+1' dado que
+             * el conteo esta retrasado en uno a causa de la primera modificacion. (cuando i==0)*/
             for(int count=0;count<toModSize;count++){
                 if(arrElem2[count]=='0') modArr[i+1]+='1';
                 else if(arrElem2[count]=='1') modArr[i+1]+='0';
@@ -89,6 +97,10 @@ void code1m(string in,string *modArr,int arrSize,int eTam,int bits){
         }
         else if(zeros>ones){
             int toModSize=arrElem2.length();
+            /*Se utiliza el for para recorrer los n bits y asi cambiar el valor de 1 por 0, y viceversa,
+             * cada 2 bits (es la razon del condicional adicional 'count%2==1',
+             * tomando en cuenta que cada 2 bits las posiciones con impares)
+             * y concatenarlo a la posicion 'i+1' del arreglo modArr.*/
             for(int count=0;count<toModSize;count++){
                 if(count%2==1){
                     if(arrElem2[count]=='0') modArr[i+1]+='1';
@@ -102,6 +114,10 @@ void code1m(string in,string *modArr,int arrSize,int eTam,int bits){
         }
         else{
             int toModSize=arrElem2.length(), cond=2;
+            /*Se utiliza el for para recorrer los n bits y asi cambiar el valor de 1 por 0, y viceversa,
+             * cada 3 bits (es la razon del condicional adicional 'count==cond' y la operacion 'cond+=3',
+             * siendo 'cond' una variable auxiliar que ayuda a saber cual es la posicion al cumplirse los 3 bits)
+             * y concatenarlo a la posicion 'i+1' del arreglo modArr.*/
             for(int count=0;count<toModSize;count++){
                 if(count==cond){
                     cond+=3;
