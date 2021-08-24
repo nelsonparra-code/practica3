@@ -64,11 +64,20 @@ string readInFile(string toReadFile){
     return data;
 }
 
-void writeInFile(string toWriteFile, string content){
+void writeInFile(string toWriteFile, string content, string operation){
     ofstream wFile;
     wFile.open("C:/Users/Usuario/infoii/practica3/sesion1/BD/"+toWriteFile);
+    if (!wFile.is_open())
+       {
+         cout << "Error abriendo el archivo." << endl;
+         exit(1);
+       }
     wFile<<content;
     wFile.close();
+
+    if(operation=="code") cout<<"Archivo codificado satisfactoriamente."<<endl;
+    else cout<<"Archivo decodificado satisfactoriamente."<<endl;
+
 }
 
 void codeFile(int seed, int codeMethod, string inputFile, string outputFile){
@@ -189,7 +198,7 @@ void codeFile(int seed, int codeMethod, string inputFile, string outputFile){
     for(int i=0;i<arrSize;i++){
         codedMessage+=modArr[i];
     }
-    writeInFile(outputFile,codedMessage);
+    writeInFile(outputFile,codedMessage,"code");
 }
 
 void decodeFile(int seed, int codeMethod, string inputFile, string outputFile){
@@ -300,5 +309,5 @@ void decodeFile(int seed, int codeMethod, string inputFile, string outputFile){
             cadenaF+=static_cast<char>(num);
         }
     }
-    writeInFile(outputFile,cadenaF);
+    writeInFile(outputFile,cadenaF,"decode");
 }

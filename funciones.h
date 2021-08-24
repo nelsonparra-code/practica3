@@ -19,12 +19,11 @@ void sepBin(string, string, int, int);
 
 /*Funcion que lee el contenido en el archivo toReadFile,
  * en la direccion C:/Users/Usuario/infoii/practica3/sesion1/BD/...
- * y retorna lo leido.
- */
+ * y retorna lo leido.*/
 string readInFile(string);
 
 //Funcion que escribe en el archivo toWriteFile, el texto content en la direccion C:/Users/Usuario/infoii/practica3/sesion1/BD/...
-void writeInFile(string, string);
+void writeInFile(string, string, string);
 
 /*Funcion que codifica una cadena (string) de bits segun el primer metodo.
  * seed es la semilla. codeMethod es el metodo de codificacion.
