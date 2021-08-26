@@ -52,7 +52,7 @@ string readInFile(string toReadFile){
     string data;
 
     ifstream rFile;
-    rFile.open("C:/Users/Usuario/infoii/practica3/sesion1/BD/"+toReadFile);
+    rFile.open("../sesion1/BD/"+toReadFile);
     if (!rFile.is_open())
        {
          cout << "Error abriendo el archivo." << endl;
@@ -66,7 +66,7 @@ string readInFile(string toReadFile){
 
 void writeInFile(string toWriteFile, string content, string operation){
     ofstream wFile;
-    wFile.open("C:/Users/Usuario/infoii/practica3/sesion1/BD/"+toWriteFile);
+    wFile.open("../sesion1/BD/"+toWriteFile);
     if (!wFile.is_open())
        {
          cout << "Error abriendo el archivo." << endl;
